@@ -97,4 +97,7 @@ pub struct Opt {
 		default_value = "oldest"
 	)]
 	pub sort:         String,
+	/// Output only the last n releases.
+	#[structopt(short = "n", long)]
+	pub limit:        Option<usize>,
 }

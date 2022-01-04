@@ -162,6 +162,7 @@ git-cliff [FLAGS] [OPTIONS] [RANGE]
 -b, --body <TEMPLATE>             Sets the template for the changelog body [env: TEMPLATE=]
 -s, --strip <PART>                Strips the given parts from the changelog [possible values: header, footer, all]
     --sort <sort>                 Sets sorting of the commits inside sections [default: oldest] [possible values: oldest, newest]
+-n, --limit <limit>                Output only the last n releases
 ```
 
 **Args:**
@@ -264,6 +265,12 @@ Prepend new changes to an existing changelog file:
 # 1- changelog header is removed from CHANGELOG.md
 # 2- new entries are prepended to CHANGELOG.md without footer part
 git cliff --unreleased --tag 1.0.0 --prepend CHANGELOG.md
+```
+
+Only generate the changelog for the last release:
+
+```sh
+git cliff --limit 1
 ```
 
 Set/remove the changelog parts:

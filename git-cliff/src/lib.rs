@@ -239,6 +239,11 @@ pub fn run(mut args: Opt) -> Result<()> {
 		}
 	}
 
+	// Apply limit if option is set
+	if let Some(limit) = args.limit {
+		releases = releases.into_iter().rev().take(limit).rev().collect();
+	}
+
 	// Generate changelog.
 	let changelog = Changelog::new(releases, &config)?;
 	if let Some(path) = args.prepend {
